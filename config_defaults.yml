@@ -489,6 +489,8 @@ Gemfile:
           - mswin
           - mingw
           - x64_mingw
+      - gem: 'semantic_puppet'
+        version: '>= 0.1.0'
     # ':system_tests':
     #   - gem: 'puppet-module-posix-system-r#{minor_version}'
     #     platforms: ruby
