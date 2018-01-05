@@ -1,8 +1,28 @@
-# PDK Module Template
+# PDK Templates
 
-## config_defaults values
+The PDK Templates is the default templates repository for use with the [Puppet Development Kit](https://github.com/puppetlabs/pdk), within which we have defined all the templates for the creation and configuration of a module. Look into these directories to find the templates:
+* `moduleroot` templates get deployed on `new module` and `convert`; use them to enforce a common boilerplate for central files.
+* `moduleroot_init` templates get only deployed when the target file does not yet exist; use them to provide skeletons for files the developer needs to modify heavily.
+* `object_templates` templates are used by the various `new ...` commands for classes, defined types, etc.
 
-The following is a description and explaination of each of the keys within config_defaults. This will help clarify the default settings we choose to apply to pdk modules.
+The PDK also absorbs the `config_defaults.yml` file to apply a set of default configurations to the module. Each top-level key in the file corresponds to a target file, and will be merged with the `:global` section at the top. Within the template evaluation the values are available under `@config`. In the module itself, you can override/amend the values by putting new values into `.sync.yml` in the module's root. The data for a target file also use `delete: true` and `unmanaged: true` to remove, or ignore the particular file.
+
+* [Basic usage](#basic-usage)
+* [Config_default Values](#values)
+* [Further Notes](#notes)
+
+## Basic Usage
+
+Templates like this one can be used in conjunction with the PDK. As default the PDK itself uses the templates within this repository to render files for use within a module. Templates can be passed to the PDK as a flag for several of the commands.
+
+> pdk convert --template_url https://github.com/puppetlabs/pdk-templates
+
+Please note that the template only needs to be passed in once if you wish to change it, every command run on the PDK will use the last specified template.
+For more on basic usage and more detailed description of the PDK in action please refer to the [PDK documentation](https://github.com/puppetlabs/pdk/blob/master/README.md).
+
+## Config_default Values <a name="values"></a>
+
+The following is a description and explaination of each of the keys within config\_defaults. This will help clarify the default settings we choose to apply to pdk modules.
 
 ### .gitattributes
 
@@ -66,3 +86,7 @@ Travis uses a .travis.yml file in the root of your repository to learn about you
 | Key            | Description   |
 | :------------- |:--------------|
 |required|Allows you to specify gems that are required within the Gemfile. Gems can be defined here within groups, for example we use the :development gem group to add in several gems that are relevant to the development of any module.|
+
+## Further Notes <a name="notes"></a>
+
+Please note that the early version of this template contained only a 'moduleroot' directory, and did not have a 'moduleroot\_init'. The PDK 'pdk new module' command will still work with templates that only have 'moduleroot', however the 'pdk convert' command will fail if the template does not have a 'moduleroot_init' directory present. To remedy this please use the up to date version of the template.
