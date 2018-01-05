@@ -463,6 +463,8 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.1.0')"
       - gem: fast_gettext
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.1.0')"
+      - gem: hiera-eyaml
+        version: '>= 2.1.0'
       # json_pure 2.0.2 added a requirement on ruby >= 2. We pin to
       # json_pure <= 2.0.1 if using ruby 1.x
       - gem: json_pure
