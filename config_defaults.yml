@@ -603,7 +603,7 @@ Gemfile:
           - mingw
           - x64_mingw
       - gem: 'semantic_puppet'
-        version: '>= 0.1.0'
+        version: '>= 1.0.1'
 .gitlab-ci.yml:
   defaults:
     cache:
