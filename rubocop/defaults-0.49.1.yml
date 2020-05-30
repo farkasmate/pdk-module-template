@@ -2,6 +2,10 @@
 :default_enabled_cops:
 - Bundler/DuplicatedGem
 - Bundler/OrderedGems
+- GetText/DecorateFunctionMessage
+- GetText/DecorateString
+- GetText/DecorateStringFormattingUsingInterpolation
+- GetText/DecorateStringFormattingUsingPercent
 - Layout/AccessModifierIndentation
 - Layout/AlignArray
 - Layout/AlignHash
@@ -219,7 +223,6 @@
 - Style/BeginBlock
 - Style/BlockComments
 - Style/BlockDelimiters
-- Style/BracesAroundHashParameters
 - Style/CaseEquality
 - Style/CharacterLiteral
 - Style/ClassAndModuleCamelCase
